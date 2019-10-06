@@ -3,11 +3,20 @@
 
 namespace App\EventListener;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AfficheControlerEvent
 {
-    public function infoType( RequestEvent $e ){
-        print $e->getRequest();
+    private $logger;
+
+    public function __construct( LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    public function infoType( RequestEvent $e )
+    {
+        $this->logger->info( $e->getRequest());
     }
 }

@@ -7,3 +7,7 @@ lançant le serveur de symfony
 ou en lançant les scripts php directement avec l'interpréteur ou encore en utilisant 
 
     $ php -S 0.0.0.0:8000 -t public/src
+
+Pour l'exemple avec le log, il ne faut pas démarrer le serveur en backround
+
+    $ bin/console server:run 0.0.0.0:8000
