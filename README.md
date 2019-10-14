@@ -1,3 +1,8 @@
+## Exemple httpKernel
+pour cette exemple, lancer
+
+    $ php -S 0.0.0.0:8000 -t public/src public/src/httpkernel.php
+    
 ## Support UE Framework
 La code cette branche accompagne le cours sur HttpKernel, l'inversion de contrôle etc.
 Les sources se trouve dans ```public/src``` vous pouvez l'executer via votre navigateur en 
