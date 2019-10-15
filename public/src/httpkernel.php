@@ -9,6 +9,10 @@ class MonController
     {
         return new Response('<html><body>Good</body></html>');
     }
+    public function helloToto()
+    {
+        return new Response('<html><body>Hello Toto</body></html>');
+    }
 }
 
 // Ajout du listener pour l'évenement kernel.request
@@ -19,7 +23,11 @@ use \Symfony\Component\HttpKernel\Event\RequestEvent;
 $dispatcher = new EventDispatcher();
 
 $listener = function( RequestEvent $e ){
-    $e->getRequest()->attributes->add(['_controller'=>[new MonController(), 'yop']]);
+    if ( $e->getRequest()->getRequestUri() === '/toto' )
+        $e->getRequest()->attributes->add(['_controller'=>[new MonController(), 'helloToto']]);
+    else
+        $e->getRequest()->attributes->add(['_controller'=>[new MonController(), 'yop']]);
+
 };
 
 $dispatcher->addListener('kernel.request', $listener );
