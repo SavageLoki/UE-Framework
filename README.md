@@ -16,6 +16,9 @@ mettre le bon callable en fonction
 4 - Réécrire la détermination du bon controller (qui est pour le moment un simple if) en la définition de
 deux routes. et du UrlMatch qui déclanche la reconnaissance des routes
 
+5 - Export les routes dans un yaml, les définir en mode déclaratif et charger les routes à partir du fichier 
+yaml.
+
 
 
 

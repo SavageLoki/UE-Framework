@@ -16,13 +16,12 @@ class MonController
 }
 
 // définition de la collection de routes
-use \Symfony\Component\Routing\Route;
-use Symfony\Component\Routing\RouteCollection;
-$routes = new RouteCollection();
-$route = new Route('/toto',['_controller'=>[new MonController(),'helloToto']]);
-$routes->add('toto', $route);
-$route = new Route('/{url}',['_controller'=>[new MonController(),'yop']],['url'=>'[a-z]+']);
-$routes->add('all', $route);
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
+
+$fileLocator = new FileLocator([__DIR__]);
+$loader = new YamlFileLoader($fileLocator);
+$routes = $loader->load('route.yaml');
 
 
 // Ajout du listener pour l'évenement kernel.request
