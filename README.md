@@ -13,7 +13,8 @@ est convertie en "callable" PHP qui sera insérer dans les arguments de l'objet 
 _controller. Le listener comparera juste RequestURI de l'API Request pour la comparer à un chemin est 
 mettre le bon callable en fonction
 
-4 - 
+4 - Réécrire la détermination du bon controller (qui est pour le moment un simple if) en la définition de
+deux routes. et du UrlMatch qui déclanche la reconnaissance des routes
 
 
 

@@ -15,19 +15,31 @@ class MonController
     }
 }
 
+// définition de la collection de routes
+use \Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
+$routes = new RouteCollection();
+$route = new Route('/toto',['_controller'=>[new MonController(),'helloToto']]);
+$routes->add('toto', $route);
+$route = new Route('/{url}',['_controller'=>[new MonController(),'yop']],['url'=>'[a-z]+']);
+$routes->add('all', $route);
+
+
 // Ajout du listener pour l'évenement kernel.request
 // Son rôle est d'initialiser le paramêtre _controller
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use \Symfony\Component\HttpKernel\Event\RequestEvent;
+use \Symfony\Component\Routing\Matcher\UrlMatcher;
+use \Symfony\Component\Routing\RequestContext;
 
 $dispatcher = new EventDispatcher();
 
-$listener = function( RequestEvent $e ){
-    if ( $e->getRequest()->getRequestUri() === '/toto' )
-        $e->getRequest()->attributes->add(['_controller'=>[new MonController(), 'helloToto']]);
-    else
-        $e->getRequest()->attributes->add(['_controller'=>[new MonController(), 'yop']]);
-
+$listener = function( RequestEvent $event ){
+    global $routes;
+    $uri = $event->getRequest()->getRequestUri();
+    $matcher = new UrlMatcher($routes, new RequestContext('/'));
+    $rep = $matcher->match($uri);
+    $event->getRequest()->attributes->add($rep);
 };
 
 $dispatcher->addListener('kernel.request', $listener );
