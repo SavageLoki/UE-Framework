@@ -28,5 +28,19 @@ if ($form->isSubmitted() && $form->isValid()) {
     $data = $form->getData();
     print_r( $data );
 } else {
-    echo "Données invalides";
+    $views = $form->createView();
+    $iterator = $views->getIterator();
+    while($iterator->valid()) {
+        /** @var Symfony\Component\Form\FormView $formView */
+        $formView = $iterator->current();
+        /** @var Symfony\Component\Form\FormErrorIterator $iterErrors */
+        $iterErrors = $formView->vars['errors'];
+        if ( $iterErrors !== null ) {
+            while ($iterErrors->valid()) {
+                echo $iterErrors->current()->getMessage();
+                $iterErrors->next();
+            }
+        }
+        $iterator->next();
+    }
 }
