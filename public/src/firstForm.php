@@ -1,16 +1,29 @@
 <?php
 require_once __DIR__.'/../../vendor/autoload.php';
 
+
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Translation\Loader\XliffFileLoader;
+use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Validation;
 
 $validator = Validation::createValidator();
 
-$formFactory = Forms::createFormFactoryBuilder()->addExtension(new ValidatorExtension($validator))->getFormFactory();
+$translator = new Translator('fr');
+$translator->addLoader('xlf', new XliffFileLoader());
+$translator->addResource(
+    'xlf',
+    __DIR__.'/../../vendor/symfony/validator/Resources/translations/validators.fr.xlf',
+    'fr'
+);
+
+$formFactory = Forms::createFormFactoryBuilder()
+    ->addExtension(new ValidatorExtension($validator))
+    ->getFormFactory();
 
 $builder = $formFactory->createBuilder();
 
@@ -37,7 +50,7 @@ if ($form->isSubmitted() && $form->isValid()) {
         $iterErrors = $formView->vars['errors'];
         if ( $iterErrors !== null ) {
             while ($iterErrors->valid()) {
-                echo $iterErrors->current()->getMessage();
+                echo $translator->trans( $iterErrors->current()->getMessage() );
                 $iterErrors->next();
             }
         }
