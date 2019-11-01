@@ -3,14 +3,10 @@
 
 namespace App\Controller;
 
+use App\Service\FormInscription;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Twig\Environment;
+
 
 /**
  * @Route("/form", name = "form_")
@@ -20,6 +16,13 @@ use Twig\Environment;
  */
 class FormController extends AbstractController
 {
+    private $formInscription;
+
+    public function __construct( FormInscription $form )
+    {
+        $this->formInscription = $form->getForm();
+    }
+
     /**
      * @Route("/inscription", name = "affiche")
      *
@@ -27,13 +30,6 @@ class FormController extends AbstractController
      */
     public function inscription()
     {
-        $builder = $this->createFormBuilder();
-        $builder->add( 'login', TextType::class, [
-            'constraints' => new NotBlank()
-        ]);
-        $builder->add('ok', SubmitType::class);
-        $form = $builder->getForm();
-
-        return $this->render('form/inscription.html.twig', ['leForm' => $form->createView()]);
+        return $this->render('form/inscription.html.twig', ['leForm' => $this->formInscription->createView()]);
     }
 }
