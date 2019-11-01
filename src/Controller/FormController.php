@@ -21,21 +21,13 @@ class FormController extends AbstractController
      */
     public function inscription()
     {
-        /** @var FormFactory $formFactory */
-        $formFactory = $this->get('form.factory');
-        $builder = $formFactory->createBuilder();
+        $builder = $this->createFormBuilder();
         $builder->add( 'login', TextType::class, [
             'constraints' => new NotBlank()
         ]);
         $builder->add('ok', SubmitType::class);
         $form = $builder->getForm();
 
-        /** @var Environment $twigEnv */
-        $twigEnv = $this->get('twig');
-        try {
-            return new Response($twigEnv->render('form.html.twig', ['leForm' => $form->createView()]));
-        } catch ( \Exception $exception ) {
-            return new Response("<html>Problème de rendu </html>");
-        }
+        return $this->render('form.html.twig', ['leForm' => $form->createView()]);
     }
 }
