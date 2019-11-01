@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{%  block body_centre %}
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Valeur Saisie</th>
+        </tr>
+        </thead>
+        <tbody>
+    {% for valeur in valeursSaisies %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ valeur }}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

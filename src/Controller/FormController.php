@@ -5,7 +5,9 @@ namespace App\Controller;
 
 use App\Service\FormInscription;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
@@ -28,8 +30,14 @@ class FormController extends AbstractController
      *
      * @return Response
      */
-    public function inscription()
+    public function inscription( Request $request)
     {
-        return $this->render('form/inscription.html.twig', ['leForm' => $this->formInscription->createView()]);
+        $this->formInscription->handleRequest($request);
+        if ($this->formInscription->isSubmitted() && $this->formInscription->isValid())
+        {
+            return $this->render( 'form/confirmation.html.twig', ['valeursSaisies' => $this->formInscription->getData()]);
+        } else {
+            return $this->render('form/inscription.html.twig', ['leForm' => $this->formInscription->createView()]);
+        }
     }
 }
