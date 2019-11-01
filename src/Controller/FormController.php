@@ -12,10 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Twig\Environment;
 
+/**
+ * @Route("/form", name = "form_")
+ *
+ * Class FormController
+ * @package App\Controller
+ */
 class FormController extends AbstractController
 {
     /**
-     * @Route("/form/inscription", name = "form_affiche")
+     * @Route("/inscription", name = "affiche")
      *
      * @return Response
      */
@@ -28,6 +34,6 @@ class FormController extends AbstractController
         $builder->add('ok', SubmitType::class);
         $form = $builder->getForm();
 
-        return $this->render('form.html.twig', ['leForm' => $form->createView()]);
+        return $this->render('form/inscription.html.twig', ['leForm' => $form->createView()]);
     }
 }
