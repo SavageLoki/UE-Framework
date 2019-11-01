@@ -1,3 +1,14 @@
+## Exemple pour Formulaire
+Pour ces exemples ont a besoin twig et de form
+
+    $ composer require twig
+    $ composer require symfony/form
+    $ composer require symfony/templating
+    $ composer require symfony/translation
+    $ composer require symfony/validator
+    $ composer require symfony/security
+    $ composer require annotations
+
 ## Exemple httpKernel
 
 L'exemple pour le httpKernel consiste a dérouler au fur et à mesure le code pour lancer une appli
