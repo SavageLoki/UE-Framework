@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 
 /**
@@ -33,6 +34,8 @@ class FormController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
+            $session = $request->getSession();
+            $session->set('App\Entity\Inscription', $form->getData());
             return $this->redirectToRoute('form_confirme');
         } else {
             return $this->render('form/inscription.html.twig', ['leForm' => $form->createView()]);
@@ -42,8 +45,11 @@ class FormController extends AbstractController
     /**
      * @Route("/confirmation", name = "confirme")
      */
-    public function confirmation( )
+    public function confirmation( Request $request )
     {
-        return $this->render( 'form/confirmation.html.twig');
+        $session = $request->getSession();
+        if ( ! $session->has('App\Entity\Inscription') )
+            throw new NotFoundResourceException( "Pas de données d'inscription !");
+        return $this->render( 'form/confirmation.html.twig', ['inscription' => $session->get('App\Entity\Inscription')]);
     }
 }
