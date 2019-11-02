@@ -3,7 +3,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Inscription;
 use App\Service\FormInscription;
+use App\Form\Type\InscriptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +20,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FormController extends AbstractController
 {
-    private $formInscription;
-
-    public function __construct( FormInscription $form )
-    {
-        $this->formInscription = $form->getForm();
-    }
-
     /**
      * @Route("/inscription", name = "affiche")
      *
@@ -32,12 +27,23 @@ class FormController extends AbstractController
      */
     public function inscription( Request $request)
     {
-        $this->formInscription->handleRequest($request);
-        if ($this->formInscription->isSubmitted() && $this->formInscription->isValid())
+        $inscription = new Inscription();
+        $inscription->setLogin("");
+        $form = $this->createForm(InscriptionType::class, $inscription);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
         {
-            return $this->render( 'form/confirmation.html.twig', ['valeursSaisies' => $this->formInscription->getData()]);
+            return $this->redirectToRoute('form_confirme');
         } else {
-            return $this->render('form/inscription.html.twig', ['leForm' => $this->formInscription->createView()]);
+            return $this->render('form/inscription.html.twig', ['leForm' => $form->createView()]);
         }
+    }
+
+    /**
+     * @Route("/confirmation", name = "confirme")
+     */
+    public function confirmation( )
+    {
+        return $this->render( 'form/confirmation.html.twig');
     }
 }
