@@ -1,4 +1,4 @@
-
+/ssh_keys/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
