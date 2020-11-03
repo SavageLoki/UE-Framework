@@ -22,16 +22,11 @@ RUN pecl install redis \
 RUN php -r "copy('https://get.symfony.com/cli/installer', '/tmp/installer.sh');";
 RUN bash /tmp/installer.sh
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
-RUN chown www-data: /usr/local/bin/symfony
-RUN chmod a+w /usr/local/bin # pour pouvoir updater symfony
+RUN chmod -R a+w /usr/local/bin # pour pouvoir updater symfony
 RUN rm -rf /tmp/installer.sh
-RUN chown -R www-data: /var/www # permettre de créer le fichier .symfony dans /var/www
+RUN mkdir /.symfony
+RUN chmod a+w /.symfony
 
 ENV COMPOSER_HOME /tmp
 ENV APP_ENV prod
 WORKDIR /opt/projet
-
-RUN chown -R www-data: /opt/projet
-RUN echo 'www-data:dev' | chpasswd
-RUN chsh -s /bin/bash www-data
-RUN usermod -d /opt/projet www-data
