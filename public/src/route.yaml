@@ -1,0 +1,9 @@
+toto:
+  path: /toto
+  controller: \MonController::helloToto
+
+all:
+  path: /{url}
+  controller: \Moncontroller::yop
+  requirements:
+    url: '[a-z]+'

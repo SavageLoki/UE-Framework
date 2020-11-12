@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{%  block body_centre %}
+    <div class="card" style="width: 18rem;">
+        <img src="/img/UPJV.svg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Confirmation de votre inscription</h5>
+            <p class="card-text">Merci {{ inscription.login }}</p>
+            <a href="#" class="btn btn-primary">Accéder au site</a>
+        </div>
+    </div>
+{% endblock %}
