@@ -33,4 +33,14 @@ class ClientController extends AbstractController
     {
         return new BinaryFileResponse(__DIR__."/../../data/tintin.png");
     }
+
+    /**
+     * @Route("/affiche/{nom}", name="client_affiche_photo")
+     * @param $nom
+     * @return Response
+     */
+    function affichePhoto( $nom )
+    {
+        return $this->render('_affiche_photo.html.twig', ['nom'=>$nom]);
+    }
 }
