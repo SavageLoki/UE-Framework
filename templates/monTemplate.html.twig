@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Template Twig</title>
-</head>
-<body>
-Le prénom de {{nom}} est Tintin {{render(path('client_affiche_photo',{nom:nom}))}}
-</body>
-</html>
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+Le prénom de {{nom}} est Tintin
+{% endblock %}
