@@ -21,8 +21,7 @@ class ClientController extends AbstractController
      */
     function info( $nom )
     {
-        $urlPhoto = $this->generateUrl('client_photo', ['nom'=>$nom]);
-        return new Response("Le prénom de $nom est Tintin <img src=\"$urlPhoto\"\>");
+        return $this->render('monTemplate.html.twig',['nom'=>$nom]);
     }
 
     /**
