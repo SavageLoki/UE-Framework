@@ -32,4 +32,24 @@ class ImgController extends AbstractController
             throw $this->createNotFoundException('Image non trouvée');
         return $this->file($filename);
     }
+
+    /**
+     * @Route("/img/menu", name="img_menu")
+     *
+     * @return Response
+     */
+    public function menu()
+    {
+        $listeImages = scandir(self::PATH_IMG);
+        foreach ( $listeImages as $key => $pathName ) {
+            if ( is_dir( $pathName ) )
+                unset( $listeImages[$key]); // on retire les . et .. de la liste
+            else
+                $listeImages[$key] = substr($pathName, 0, -4 ); // on retire l'extension .jpg
+        }
+        return $this->render('img/menu.html.twig', [
+            'url' => '/img/data/',
+            'items'=> $listeImages
+        ]);
+    }
 }

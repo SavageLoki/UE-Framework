@@ -1,0 +1,10 @@
+<ul class="pure-menu-list">
+    <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+        <a href="#" id="menuLink1" class="pure-menu-link">Download</a>
+        <ul class="pure-menu-children">
+            {% for item in items  %}
+                <li class="pure-menu-item"><a href="{{ url }}{{ item }}" class="pure-menu-link">{{item}}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
