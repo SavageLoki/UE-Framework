@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="insset.ovh" id="36b8cc0e-9de3-45ab-9781-ed43ec56c0b5" keyPath="C:\Users\gothi\Documents\Works\LP\UE-Framework\ssh_keys\cle" port="22" customName="insset.ovh" nameFormat="CUSTOM" username="sftp.joanna.reiss">
+        <option name="customName" value="insset.ovh" />
+      </sshConfig>
+      <sshConfig host="insset.ovh" id="22e89b7a-58ed-4716-a3d1-6b542059c2e5" keyPath="C:\Users\gothi\Documents\Works\LP\UE-Framework\ssh_keys\cle" port="22" nameFormat="DESCRIPTIVE" username="joanna.reiss" />
+    </configs>
+  </component>
+</project>

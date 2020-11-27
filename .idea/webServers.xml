@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ffbeb7f4-fbec-47bd-9184-bea3426715c4" name="insset.ovh" url="http://joanna-reiss.insset.ovh">
+        <fileTransfer accessType="SFTP" host="insset.ovh" port="22" sshConfigId="36b8cc0e-9de3-45ab-9781-ed43ec56c0b5" sshConfig="insset.ovh" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
