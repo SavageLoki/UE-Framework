@@ -5,14 +5,11 @@ namespace App\Controller;
 
 
 use App\Entity\Login;
+use App\Form\Type\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class AuthController extends AbstractController
@@ -27,17 +24,7 @@ class AuthController extends AbstractController
     {
         $dataEntity = new Login();
 
-        $builder = $this->createFormBuilder($dataEntity);
-        $contrainte = new NotBlank();
-
-
-        $builder->add('nom', TextType::class,[
-            'constraints'=>[$contrainte, new Length(['min'=>2,'minMessage'=>'Too Short only {{ value }} chars instead of {{ limit }}'])]
-        ])
-            ->add('btSubmit', SubmitType::class);
-
-        $form = $builder->getForm();
-
+        $form = $this->createForm(LoginType::class, $dataEntity);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
