@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Login;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +25,9 @@ class AuthController extends AbstractController
      */
     public function login(Request $request)
     {
-        $builder = $this->createFormBuilder();
+        $dataEntity = new Login();
+
+        $builder = $this->createFormBuilder($dataEntity);
         $contrainte = new NotBlank();
 
 
@@ -38,7 +41,8 @@ class AuthController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            return $this->forward('App\Controller\AuthController::welcome');
+            $dataEntity = $form->getData();
+            return $this->forward('App\Controller\AuthController::welcome', ['data'=> $dataEntity]);
         } else {
             $infoRendu = $form->createView();
             return $this->render("login.html.twig", ["infoForm" => $infoRendu]);
@@ -48,10 +52,11 @@ class AuthController extends AbstractController
     /**
      * @Route("/welcome", Name="auth_welcome")
      * @param TranslatorInterface $translator
+     * @param Login $data
      * @return Response
      */
-    public function welcome( TranslatorInterface $translator)
+    public function welcome( TranslatorInterface $translator, Login $data)
     {
-        return new Response($translator->trans("Welcome"));
+        return new Response($translator->trans("Welcome {$data->getNom()}"));
     }
 }
