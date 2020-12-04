@@ -1,0 +1,36 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    color: white;
+
+}
+
+li  {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.sousMenu li a  {
+    display: none;
+}
+
+li.menu:hover ul.sousMenu li a{
+    display: block;
+
+}
+
+.sousMenu a {
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+

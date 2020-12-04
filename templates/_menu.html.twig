@@ -1,0 +1,7 @@
+
+
+<ul class="sousMenu">
+    {% for element in menuListe %}
+        <li><a href="{{ url("img_data", {animal:element}) }}">{{ element }}</a></li>
+    {% endfor %}
+</ul>

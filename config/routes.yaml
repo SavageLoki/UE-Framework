@@ -1,3 +1,8 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+img_data:
+  path: /img/data/{animal}
+  controller: App\Controller\ImageController::affiche
+  methods: GET
