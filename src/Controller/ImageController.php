@@ -18,24 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ImageController extends AbstractController
 {
 
-    /**
-     * @Route("/photo/liste", name="img_liste")
-     */
-    public function menu()
-    {
-        $listElement = scandir("././../images/");
-        $listImages = [];
 
-        foreach ($listElement as $element) {
-            if ((is_dir($element)) == false) {
-                array_push($listImages, $element);
-            }
-        }
-        return $this->render('_menu.html.twig', ['menuListe'=>$listImages]);
-
-
-
-    }
 
     /**
      * @Route ("/home", name="img_home")
@@ -51,17 +34,32 @@ class ImageController extends AbstractController
      */
     function affiche($animal)
     {
-        $response = new Response();
-        $response->headers->set("Content-Type", "image/jpg");
 
-        if (!file_exists(__DIR__ . "/../../images/${animal}.jpg")) {
+        if (!file_exists(__DIR__ ."\\..\\..\\images\\${animal}")) {
             return $this->render('erreur.html.twig');
         } else {
-            return $this->file(__DIR__ . "/../../images/${animal}.jpg");
+            return $this->file(__DIR__ . "\\..\\..\\images\\${animal}");
         }
     }
 
+    /**
+     * @Route("/photo/liste", name="img_liste")
+     */
+    public function menu()
+    {
+        $listElement = scandir(__DIR__."\\..\\..\\images\\");
+        $listImages = [];
 
+        foreach ($listElement as $element) {
+            if ((is_dir($element)) == false) {
+                array_push($listImages, $element);
+            }
+        }
+        return $this->render('_menu.html.twig', ['menuListe'=>$listImages]);
+
+
+
+    }
 
 
 
