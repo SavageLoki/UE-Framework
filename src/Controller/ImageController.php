@@ -35,10 +35,10 @@ class ImageController extends AbstractController
     function affiche($animal)
     {
 
-        if (!file_exists(__DIR__ ."\\..\\..\\images\\${animal}")) {
+        if (!file_exists(__DIR__ ."/../../images/${animal}")) {
             return $this->render('erreur.html.twig');
         } else {
-            return $this->file(__DIR__ . "\\..\\..\\images\\${animal}");
+            return $this->file(__DIR__ . "/../../images/${animal}");
         }
     }
 
@@ -47,7 +47,7 @@ class ImageController extends AbstractController
      */
     public function menu()
     {
-        $listElement = scandir(__DIR__."\\..\\..\\images\\");
+        $listElement = scandir(__DIR__."/../../images/");
         $listImages = [];
 
         foreach ($listElement as $element) {
