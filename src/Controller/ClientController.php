@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RequestContext;
 
 /**
  * @Route("/client")
@@ -15,8 +16,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ClientController extends AbstractController
 {
+
+    function __construct (RequestContext $req) {
+        $req;
+    }
+
     /**
-     * @Route("/prenom/{nom}", name="client_info")
+     * @Route("/prenom/{nom}", name="client_info", options={"ouverture":"8-17"})
      * @param $nom
      * @return Response
      */
