@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+{{ form_start(loginForm) }}
+    <li>{{ form_row(loginForm.email) }}</li>
+<li>{{ form_row(loginForm.password) }}</li>
+<li><button type="submit"  class="btn">Register</button></li>
+
+{{ form_end(loginForm) }}
+
+{% endblock %}

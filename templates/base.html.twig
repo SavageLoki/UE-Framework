@@ -8,6 +8,7 @@
     {% endblock %}
 </head>
 <body>
+ {% block navbar %}
 <nav>
 
     <ul>
@@ -16,8 +17,12 @@
             Images
             {{ render(controller('App\\Controller\\ImageController::menu')) }}
         </li>
+        <li>
+            {{ render(controller('App\\Controller\\LoginController::register')) }}
+       </li>
     </ul>
 </nav>
+ {% endblock %}
 
 {% block body %}
 

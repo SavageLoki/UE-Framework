@@ -20,9 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0e3b00-ef65-4aac-96a4-80ad6a23a0d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/traduction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/validator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Constraints/PasswordConstraint.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Constraints/PasswordConstraintValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/auth.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/connecte.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/notconnect.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/validators.fr.xlf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/HourListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/HourListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +160,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1jugTCz0kQtl2kDopmestLy3qUw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -207,7 +221,9 @@
       <workItem from="1609691951476" duration="36000" />
       <workItem from="1609773391103" duration="4668000" />
       <workItem from="1609966953290" duration="6425000" />
-      <workItem from="1610007218877" duration="3000000" />
+      <workItem from="1610007218877" duration="14779000" />
+      <workItem from="1610053680501" duration="5486000" />
+      <workItem from="1610091568333" duration="13389000" />
     </task>
     <servers />
   </component>
@@ -247,6 +263,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1609776868195" />
+    <state x="486" y="199" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1610054814909">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="486" y="199" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1610054814909" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606920668039">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -307,14 +327,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="746" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1609972262339" />
-    <state x="498" y="135" key="NewPhpClassDialog" timestamp="1609971364959">
+    <state x="498" y="135" key="NewPhpClassDialog" timestamp="1610099557656">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1609971364959" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1609968894241">
+    <state x="498" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1610099557656" />
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1610026791287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1609968894226" />
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1610026791287" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1609969871316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

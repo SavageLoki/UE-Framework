@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(infoForm) }}
+    {{ form_row(infoForm.mail) }}
+    {{ form_row(infoForm.password.first) }}
+    {{ form_row(infoForm.password.second) }}
+
+    <button type="submit" class="btn">Register</button>
+    {{ form_end(infoForm) }}
+
+    <section>
+
+            {% for error in errors %}
+
+                    error.message
+
+            {% endfor %}
+
+    </section>
+
+
+{% endblock %}
