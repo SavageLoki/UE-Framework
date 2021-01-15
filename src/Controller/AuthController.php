@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Constraints\PasswordConstraint;
+use App\Entity\Login;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -28,6 +29,7 @@ class AuthController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
         $pwdConstraint = new PasswordConstraint();
         $isEmail = new Email();
 
+        $user = new Login();
 
         $builder->add('mail', TextType::class, [
             'constraints' => [$contrainte, $isEmail]
