@@ -3,6 +3,15 @@
 
 
 {% block body %}
-    Les emails dans la db : {{ data.email }}
-    le mdp: {{ data.password }}
+
+    Les emails :
+{%  for donnee in donnees %}
+    {{ donnee.email }}
+{% endfor %}
+
+    Les mdp :
+
+    {%  for donnee in donnees %}
+        {{ donnee.password }}
+    {% endfor %}
 {% endblock %}

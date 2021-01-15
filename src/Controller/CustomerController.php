@@ -38,13 +38,16 @@ class CustomerController extends AbstractController
     }
 
     /**
-     * @Route("/donnees/{id}", name="donnees")
+     * @Route("/donnees", name="donnees")
      */
-    public function data (Customer $customer):Response {
+    public function data () {
+        $repository = $this->getDoctrine()->getRepository(Customer::class);
+
+        $donnees = $repository->findAll();
 
 
         return $this->render('customer/data.html.twig', [
-            'data' => $customer,
+            'donnees' => $donnees,
         ]);
     }
 }
